@@ -20,7 +20,7 @@ namespace OOPSummative2
         public void loadform(object Form)
         {
             if (this.mainpanel.Controls.Count > 0)
-                this.mainpanel.Controls.RemoveAt(0);
+                this.mainpanel.Controls[0].Dispose();
             Form f = Form as Form;
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
