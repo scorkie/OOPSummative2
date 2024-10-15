@@ -78,6 +78,7 @@
     <Compile Include="ration.Designer.cs">
       <DependentUpon>ration.cs</DependentUpon>
     </Compile>
+    <Compile Include="RescueItem.cs" />
     <Compile Include="snRescue.cs">
       <SubType>Form</SubType>
     </Compile>
