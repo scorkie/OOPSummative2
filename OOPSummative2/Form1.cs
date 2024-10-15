@@ -15,6 +15,7 @@ namespace OOPSummative2
         public Form1()
         {
             InitializeComponent();
+            loadform(new firstAid());
         }
         public void loadform(object Form)
         {
