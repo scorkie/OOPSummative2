@@ -1,34 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OOPSummative2
 {
     public partial class firstAid : Form
     {
-        int buttonPresses = 0;
+        private Connection connection;
+        private List<RescueItem> items;
 
-        public firstAid()
+        public firstAid(Connection connection)
         {
             InitializeComponent();
+            this.connection = connection;
+            items = connection.getCurrentItems(RescueItemType.FIRSTAID);
 
+            int row = 0;
+            int pos = 0;
+
+            foreach (RescueItem item in items)
+            {
+                // base + ((size of rectangle + padding) * position)
+                int locX = 80 + ((240+45)*pos);
+                int locY = 50 + ((283+45)*row);
+                item.itemToPanel(this, locX, locY);
+
+                // if position is on the third item, reset position back to 0 and increment the row for the next row of items
+                if (pos == 3)
+                {
+                    pos = 0;
+                    row++;
+                }
+                else
+                    pos++;
+
+                
+            }
+            // set picturebox back
+            //pictureBox1.SendToBack();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            buttonPresses++;
-
-            int locX = 100 * (buttonPresses + 1);
-            int locY = 14 + (296 * (buttonPresses / 5));
-            RescueItem item = new RescueItem();
-            item.itemToPanel(this, locX, locY);
-            pictureBox1.SendToBack();
-        }
     }
 }

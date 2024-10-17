@@ -9,12 +9,22 @@ using System.Windows.Forms;
 
 namespace OOPSummative2
 {
-    internal class RescueItem
+    public enum RescueItemType
     {
-        private string itemName;
-        private double itemPrice;
-        private short currentItemCount;
-        private string itemImagePath;
+        FIRSTAID,
+        RATIONS,
+        SEARCHANDRESCUE,
+        DUMMY,
+    }
+
+    public class RescueItem
+    {
+        public string itemName { get; set; }
+        public decimal itemPrice { get; set; }
+        public int itemQuantity { get; set; }
+        public int currentItemCount { get; set; } = 0;
+        public Image itemThumbnail { get; set; }
+        public RescueItemType itemType { get; } = RescueItemType.DUMMY;
 
         private Panel background = new Panel();
         private PictureBox itemPictureBox = new PictureBox();
@@ -30,21 +40,46 @@ namespace OOPSummative2
             itemPrice = 500;
         }
 
-        public RescueItem(string itemName, double itemPrice)
+        public RescueItem(string name, decimal price, int count, Image thumbnail, RescueItemType type)
         {
-            this.itemName = itemName;
-            this.itemPrice = itemPrice;
+            itemName = name;
+            itemPrice = price;
+            itemQuantity = count;
+            itemThumbnail = thumbnail;
+            itemType = type;
         }
 
+        public static RescueItemType stringToType(string input)
+        {
+            RescueItemType itemType = RescueItemType.DUMMY;
+            switch (input)
+            {
+                case "FIRSTAID":
+                    itemType = RescueItemType.FIRSTAID;
+                    break;
+                case "RATIONS":
+                    itemType = RescueItemType.RATIONS;
+                    break;
+                case "SEARCHANDRESCUE":
+                    itemType = RescueItemType.SEARCHANDRESCUE;
+                    break;
+                default:
+                    itemType = RescueItemType.DUMMY;
+                    break;
+            }
+            return itemType;
+        } 
 
         private void bndgPlus_MouseClick(object sender, MouseEventArgs e)
         {
+            if (currentItemCount+1 > itemQuantity) return;
             currentItemCount++;
             itemCount.Text = currentItemCount.ToString();
         }
 
         private void bndgMinus_MouseClick(object sender, MouseEventArgs e)
         {
+            if (currentItemCount-1 < 0) return;
             currentItemCount--;
             itemCount.Text = currentItemCount.ToString();
         }
@@ -102,7 +137,7 @@ namespace OOPSummative2
             itemCount.Name = "itemCount";
             itemCount.Size = new Size(29, 22);
             itemCount.TabIndex = 3;
-            itemCount.Text = this.currentItemCount.ToString();
+            itemCount.Text = "0";
             itemCount.TextAlign = HorizontalAlignment.Center;
             // 
             // priceLabel
@@ -114,7 +149,7 @@ namespace OOPSummative2
             priceLabel.Name = "priceLabel";
             priceLabel.Size = new Size(42, 18);
             priceLabel.TabIndex = 2;
-            priceLabel.Text = this.itemPrice.ToString();
+            priceLabel.Text = "₱" + this.itemPrice.ToString();
             // 
             // titleLabel
             // 
@@ -130,10 +165,11 @@ namespace OOPSummative2
             // 
             // itemPictureBox
             // 
-            itemPictureBox.Image = global::OOPSummative2.Properties.Resources.bandage;
+            itemPictureBox.Image = itemThumbnail;
             itemPictureBox.Location = new Point(17, 16);
             itemPictureBox.Margin = new Padding(4, 4, 4, 4);
             itemPictureBox.Name = "itemPictureBox";
+            itemPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             itemPictureBox.Size = new Size(205, 197);
             itemPictureBox.TabIndex = 0;
             itemPictureBox.TabStop = false;
