@@ -39,12 +39,12 @@ namespace OOPSummative2
 
         private void ratBtn_Click(object sender, EventArgs e)
         {
-            //loadform(new ration(connection));
+            loadform(new ration(connection));
         }
 
         private void snrBtn_Click(object sender, EventArgs e)
         {
-            //loadform(new snRescue(connection));
+            loadform(new snRescue(connection));
         }
 
         private void chkBtn_Click(object sender, EventArgs e)

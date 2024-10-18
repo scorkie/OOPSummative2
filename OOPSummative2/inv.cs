@@ -12,8 +12,6 @@ namespace OOPSummative2
 {
     public partial class inv : Form
     {
-        private PictureBox addFirstAid;
-
         private Session session;
         private List<RescueItem> items;
 
@@ -50,32 +48,8 @@ namespace OOPSummative2
                     pos++;
             }
 
-            placeAddButton(locX, locY);
-
             // set picturebox back
             pictureBox1.SendToBack();
-        }
-
-        private void placeAddButton(int locX, int locY)
-        {
-            this.addFirstAid = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.addFirstAid)).BeginInit();
-
-            // 
-            // addFirstAid
-            // 
-            this.addFirstAid.Anchor = AnchorStyles.None;
-            this.addFirstAid.Image = global::OOPSummative2.Properties.Resources.add;
-            this.addFirstAid.Location = new Point(locX, locY);
-            this.addFirstAid.Margin = new System.Windows.Forms.Padding(4);
-            this.addFirstAid.Name = "addFirstAid";
-            this.addFirstAid.Size = new System.Drawing.Size(107, 101);
-            this.addFirstAid.TabIndex = 10;
-            this.addFirstAid.TabStop = false;
-
-            ((System.ComponentModel.ISupportInitialize)(this.addFirstAid)).EndInit();
-
-            this.Controls.Add(addFirstAid);
         }
 
     }

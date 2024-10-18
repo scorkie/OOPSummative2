@@ -12,9 +12,12 @@ namespace OOPSummative2
 {
     public partial class ration : Form
     {
-        public ration()
+        Session session;
+
+        public ration(Session session)
         {
             InitializeComponent();
+            this.session = session;
         }
     }
 }
