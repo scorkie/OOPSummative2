@@ -12,12 +12,12 @@ namespace OOPSummative2
 {
     public partial class Form1 : Form
     {
-        private Connection connection;
+        private Session connection;
 
         public Form1()
         {
             InitializeComponent();
-            connection = new Connection("MSI\\SQLEXPRESS", "RescueDB");
+            connection = new Session("MSI\\SQLEXPRESS", "RescueDB");
             loadform(new firstAid(connection));
         }
         public void loadform(Form form)
@@ -49,12 +49,12 @@ namespace OOPSummative2
 
         private void chkBtn_Click(object sender, EventArgs e)
         {
-            //loadform(new cOut(connection));
+            loadform(new cOut(connection));
         }
 
         private void invBtn_Click(object sender, EventArgs e)
         {
-            //loadform(new inv(connection));
+            loadform(new inv(connection));
         }
     }
 }
