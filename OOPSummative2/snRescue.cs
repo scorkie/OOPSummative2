@@ -12,9 +12,11 @@ namespace OOPSummative2
 {
     public partial class snRescue : Form
     {
-        public snRescue()
+        Session session;
+        public snRescue(Session session)
         {
             InitializeComponent();
+            this.session = session;
         }
     }
 }

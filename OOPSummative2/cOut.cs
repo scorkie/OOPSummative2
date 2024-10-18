@@ -12,7 +12,7 @@ namespace OOPSummative2
 {
     public partial class cOut : Form
     {
-        public cOut()
+        public cOut(Session connection)
         {
             InitializeComponent();
         }

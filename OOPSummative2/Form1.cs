@@ -12,15 +12,19 @@ namespace OOPSummative2
 {
     public partial class Form1 : Form
     {
+        private Session connection;
+
         public Form1()
         {
             InitializeComponent();
+            connection = new Session("MSI\\SQLEXPRESS", "RescueDB");
+            loadform(new firstAid(connection));
         }
-        public void loadform(object Form)
+        public void loadform(Form form)
         {
             if (this.mainpanel.Controls.Count > 0)
-                this.mainpanel.Controls.RemoveAt(0);
-            Form f = Form as Form;
+                this.mainpanel.Controls[0].Dispose();
+            Form f = form;
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
             this.mainpanel.Controls.Add(f);
@@ -30,27 +34,27 @@ namespace OOPSummative2
 
         private void kitBtn_Click(object sender, EventArgs e)
         {
-            loadform(new firstAid());
+            loadform(new firstAid(connection));
         }
 
         private void ratBtn_Click(object sender, EventArgs e)
         {
-            loadform(new ration());
+            loadform(new ration(connection));
         }
 
         private void snrBtn_Click(object sender, EventArgs e)
         {
-            loadform(new snRescue());
+            loadform(new snRescue(connection));
         }
 
         private void chkBtn_Click(object sender, EventArgs e)
         {
-            loadform(new cOut());
+            loadform(new cOut(connection));
         }
 
         private void invBtn_Click(object sender, EventArgs e)
         {
-            loadform(new inv());
+            loadform(new inv(connection));
         }
     }
 }
