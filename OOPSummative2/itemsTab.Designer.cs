@@ -1,10 +1,7 @@
 ﻿namespace OOPSummative2
 {
-    partial class firstAid
+    partial class itemsTab
     {
-
-        
-
         /// <summary>
         /// Required designer variable.
         /// </summary>

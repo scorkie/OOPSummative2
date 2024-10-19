@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OOPSummative2
@@ -18,7 +11,8 @@ namespace OOPSummative2
         {
             InitializeComponent();
             connection = new Session("MSI\\SQLEXPRESS", "RescueDB");
-            loadform(new firstAid(connection));
+            // Load firstaid as default
+            loadform(new itemsTab(connection, RescueItemType.FIRSTAID));
         }
         public void loadform(Form form)
         {
@@ -34,17 +28,17 @@ namespace OOPSummative2
 
         private void kitBtn_Click(object sender, EventArgs e)
         {
-            loadform(new firstAid(connection));
+            loadform(new itemsTab(connection, RescueItemType.FIRSTAID));
         }
 
         private void ratBtn_Click(object sender, EventArgs e)
         {
-            loadform(new ration(connection));
+            loadform(new itemsTab(connection, RescueItemType.RATIONS));
         }
 
         private void snrBtn_Click(object sender, EventArgs e)
         {
-            loadform(new snRescue(connection));
+            loadform(new itemsTab(connection, RescueItemType.SEARCHANDRESCUE));
         }
 
         private void chkBtn_Click(object sender, EventArgs e)
@@ -54,7 +48,7 @@ namespace OOPSummative2
 
         private void invBtn_Click(object sender, EventArgs e)
         {
-            loadform(new inv(connection));
+            loadform(new inventoryTab(connection));
         }
     }
 }

@@ -47,6 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="inventoryTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="inventoryTab.Designer.cs">
+      <DependentUpon>inventoryTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="itemsTab.Designer.cs">
+      <DependentUpon>itemsTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="cOut.cs">
       <SubType>Form</SubType>
@@ -54,11 +63,8 @@
     <Compile Include="cOut.Designer.cs">
       <DependentUpon>cOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="firstAid.cs">
+    <Compile Include="itemsTab.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="firstAid.Designer.cs">
-      <DependentUpon>firstAid.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -66,38 +72,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="inv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="inv.Designer.cs">
-      <DependentUpon>inv.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ration.Designer.cs">
-      <DependentUpon>ration.cs</DependentUpon>
-    </Compile>
     <Compile Include="RescueItem.cs" />
-    <Compile Include="snRescue.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="snRescue.Designer.cs">
-      <DependentUpon>snRescue.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="cOut.resx">
       <DependentUpon>cOut.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="firstAid.resx">
-      <DependentUpon>firstAid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="inv.resx">
-      <DependentUpon>inv.cs</DependentUpon>
+    <EmbeddedResource Include="inventoryTab.resx">
+      <DependentUpon>inventoryTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="itemsTab.resx">
+      <DependentUpon>itemsTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,12 +97,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ration.resx">
-      <DependentUpon>ration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="snRescue.resx">
-      <DependentUpon>snRescue.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

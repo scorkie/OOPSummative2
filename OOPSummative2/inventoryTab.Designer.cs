@@ -1,6 +1,6 @@
 ﻿namespace OOPSummative2
 {
-    partial class inv
+    partial class inventoryTab
     {
         /// <summary>
         /// Required designer variable.

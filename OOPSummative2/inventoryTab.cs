@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace OOPSummative2
 {
-    public partial class inv : Form
+    public partial class inventoryTab : Form
     {
         private Session session;
         private List<RescueItem> items;
 
-        public inv(Session session)
+        public inventoryTab(Session session)
         {
             InitializeComponent();
             this.session = session;

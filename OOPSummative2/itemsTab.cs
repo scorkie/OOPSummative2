@@ -12,17 +12,19 @@ using Microsoft.VisualBasic;
 
 namespace OOPSummative2
 {
-    public partial class firstAid : Form
+    public partial class itemsTab : Form
     {
-        private PictureBox addFirstAid;
+        private PictureBox addButton;
 
         private Session session;
         private List<RescueItem> items;
+        private RescueItemType tabItemsType;
 
-        public firstAid(Session session)
+        public itemsTab(Session session, RescueItemType type)
         {
             InitializeComponent();
             this.session = session;
+            this.tabItemsType = type;
             refreshItems();
             
         }
@@ -32,7 +34,7 @@ namespace OOPSummative2
             this.Controls.Clear();
 
             // get all items
-            items = this.session.GetItems(RescueItemType.FIRSTAID);
+            items = this.session.GetItems(tabItemsType);
 
             int row = 0;
             int pos = 0;
@@ -68,26 +70,26 @@ namespace OOPSummative2
             locX += 285;
             locY += 85;
 
-            this.addFirstAid = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.addFirstAid)).BeginInit();
+            addButton = new PictureBox();
+            ((ISupportInitialize)(addButton)).BeginInit();
 
             // 
             // addFirstAid
             // 
-            this.addFirstAid.Anchor = AnchorStyles.None;
-            this.addFirstAid.Image = global::OOPSummative2.Properties.Resources.add;
-            this.addFirstAid.Location = new Point(locX, locY);
-            this.addFirstAid.Margin = new System.Windows.Forms.Padding(4);
-            this.addFirstAid.Name = "addFirstAid";
-            this.addFirstAid.Size = new System.Drawing.Size(107, 101);
-            this.addFirstAid.SizeMode = PictureBoxSizeMode.StretchImage;
-            this.addFirstAid.TabIndex = 10;
-            this.addFirstAid.TabStop = false;
-            addFirstAid.MouseClick += new MouseEventHandler(addFirstAid_MouseClick);
+            addButton.Anchor = AnchorStyles.None;
+            addButton.Image = Properties.Resources.add;
+            addButton.Location = new Point(locX, locY);
+            addButton.Margin = new Padding(4);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(107, 101);
+            addButton.SizeMode = PictureBoxSizeMode.StretchImage;
+            addButton.TabIndex = 10;
+            addButton.TabStop = false;
+            addButton.MouseClick += new MouseEventHandler(addFirstAid_MouseClick);
 
-            ((System.ComponentModel.ISupportInitialize)(this.addFirstAid)).EndInit();
+            ((ISupportInitialize)(addButton)).EndInit();
 
-            this.Controls.Add(addFirstAid);
+            Controls.Add(addButton);
         }
 
         private void addFirstAid_MouseClick(object sender, MouseEventArgs e)
@@ -103,7 +105,7 @@ namespace OOPSummative2
             decimal itemPrice = Convert.ToDecimal(itemPriceText);
             int itemCount = Convert.ToInt32(itemQuantityText);
             Image itemImage = Properties.Resources.dummy;
-            RescueItemType itemType = RescueItemType.FIRSTAID;
+            RescueItemType itemType = tabItemsType;
 
             // load thumbnail image
             OpenFileDialog thumbnailFileDialog = new OpenFileDialog();
@@ -118,10 +120,7 @@ namespace OOPSummative2
             }
 
             session.AddItem(new RescueItem(itemName, itemPrice, itemCount, itemImage, itemType));
-
-
             refreshItems();
         }
-
     }
 }
