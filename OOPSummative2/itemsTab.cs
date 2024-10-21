@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 
@@ -130,16 +126,10 @@ namespace OOPSummative2
             {
                 if (item.currentItemCount > 0)
                 {
-                    if (session.itemsToCheckout.FirstOrDefault(x => x.itemName == item.itemName) != null)
-                    {
-                        session.itemsToCheckout.First(x => x.itemName == item.itemName).currentItemCount = item.currentItemCount;
-                    } else
-                    {
-                        session.itemsToCheckout.Add(item);
-                    }
+                    RescueItem foundItem = session.itemsToCheckout.FirstOrDefault(x => x.itemName == item.itemName);
+                    if (foundItem == null) { session.itemsToCheckout.Add(item); }
                 }
             }
-
             refreshItems();
         }
     }

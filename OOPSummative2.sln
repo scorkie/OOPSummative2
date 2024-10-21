@@ -5,8 +5,6 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPSummative2", "OOPSummative2\OOPSummative2.csproj", "{46F4823C-BD21-4C7B-8B96-8ACBD3E1BD1C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{1947D1C4-3E9B-40AE-892D-EDD725C30C60}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -73,6 +73,7 @@
             this.receiptGrid.MultiSelect = false;
             this.receiptGrid.Name = "receiptGrid";
             this.receiptGrid.ReadOnly = true;
+            this.receiptGrid.RowHeadersVisible = false;
             this.receiptGrid.RowHeadersWidth = 51;
             this.receiptGrid.Size = new System.Drawing.Size(1108, 585);
             this.receiptGrid.TabIndex = 1;
@@ -241,7 +242,7 @@
             // 
             this.PrintBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
             this.PrintBtn.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintBtn.Location = new System.Drawing.Point(917, 139);
+            this.PrintBtn.Location = new System.Drawing.Point(917, 127);
             this.PrintBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PrintBtn.Name = "PrintBtn";
             this.PrintBtn.Size = new System.Drawing.Size(157, 54);
@@ -253,7 +254,7 @@
             // 
             this.totalBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
             this.totalBtn.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalBtn.Location = new System.Drawing.Point(752, 138);
+            this.totalBtn.Location = new System.Drawing.Point(752, 127);
             this.totalBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.totalBtn.Name = "totalBtn";
             this.totalBtn.Size = new System.Drawing.Size(157, 54);
@@ -266,7 +267,7 @@
             this.clrBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(185)))), ((int)(((byte)(229)))));
             this.clrBtn.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clrBtn.ForeColor = System.Drawing.Color.White;
-            this.clrBtn.Location = new System.Drawing.Point(913, 57);
+            this.clrBtn.Location = new System.Drawing.Point(917, 65);
             this.clrBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clrBtn.Name = "clrBtn";
             this.clrBtn.Size = new System.Drawing.Size(157, 54);
@@ -279,7 +280,7 @@
             this.delBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.delBtn.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.delBtn.ForeColor = System.Drawing.Color.White;
-            this.delBtn.Location = new System.Drawing.Point(748, 58);
+            this.delBtn.Location = new System.Drawing.Point(752, 65);
             this.delBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.delBtn.Name = "delBtn";
             this.delBtn.Size = new System.Drawing.Size(157, 54);
