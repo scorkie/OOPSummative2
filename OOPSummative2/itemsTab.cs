@@ -62,6 +62,7 @@ namespace OOPSummative2
 
             placeAddButton(locX, locY);
             Controls.Add(pictureBox1);
+            Controls.Add(addToCheckout);
             pictureBox1.SendToBack();
         }
 
@@ -120,6 +121,25 @@ namespace OOPSummative2
             }
 
             session.AddItem(new RescueItem(itemName, itemPrice, itemCount, itemImage, itemType));
+            refreshItems();
+        }
+
+        private void addToCheckout_Click(object sender, EventArgs e)
+        {
+            foreach (RescueItem item in items)
+            {
+                if (item.currentItemCount > 0)
+                {
+                    if (session.itemsToCheckout.FirstOrDefault(x => x.itemName == item.itemName) != null)
+                    {
+                        session.itemsToCheckout.First(x => x.itemName == item.itemName).currentItemCount = item.currentItemCount;
+                    } else
+                    {
+                        session.itemsToCheckout.Add(item);
+                    }
+                }
+            }
+
             refreshItems();
         }
     }

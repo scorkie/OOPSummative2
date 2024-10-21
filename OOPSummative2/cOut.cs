@@ -12,9 +12,32 @@ namespace OOPSummative2
 {
     public partial class cOut : Form
     {
-        public cOut(Session connection)
+        private Session session;
+
+        public cOut(Session session)
         {
             InitializeComponent();
+            this.session = session;
+            refreshDataGrid();
+        }
+
+        private void refreshDataGrid()
+        {
+            receiptGrid.Rows.Clear();
+
+            foreach(RescueItem item in session.itemsToCheckout)
+            {
+                receiptGrid.Rows.Add(new string[] {item.itemName, item.currentItemCount.ToString(), item.itemPrice.ToString()});
+            }
+        }
+
+        private void delBtn_Click(object sender, EventArgs e)
+        {
+            int selectedRow = receiptGrid.CurrentCell.RowIndex;
+            string selectedItemName = receiptGrid.Rows[selectedRow].Cells[0].Value.ToString();
+            RescueItem item = session.itemsToCheckout.First(x => x.itemName.Equals(selectedItemName));
+            session.itemsToCheckout.Remove(item);
+            refreshDataGrid();
         }
     }
 }

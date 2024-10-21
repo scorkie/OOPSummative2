@@ -11,7 +11,7 @@ namespace OOPSummative2
     public class Session
     {
         public SqlConnection connection;
-        public List<RescueItem> itemsToCheckout;
+        public List<RescueItem> itemsToCheckout = new List<RescueItem>();
 
         public Session(string dataSource, string initialCatalog)
         {
