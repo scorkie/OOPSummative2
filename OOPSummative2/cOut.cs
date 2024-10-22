@@ -99,9 +99,12 @@ namespace OOPSummative2
             Console.WriteLine("Receipt saved to " + filePath);
         }
         public void bill(){
-            receiptTxt.Text = "------------------------------------------------------------------------------\n\n";
+
+            receiptTxt.Text = "Hello world"; 
+
+            receiptTxt.Text = "--------------------------------------------------------------------------------------------------------------------------------\n";
             receiptTxt.Text = "\t\t\tAFC RESCUE TRADERS\n\t\tJefferson St., Samantha Homes\n\t\tMatina Pangi, Davao City\n\t\t\tAFC Rescue Traders@gmail.com\n0912-373-3353\n";
-            receiptTxt.Text = "------------------------------------------------------------------------------\n\n";
+            receiptTxt.Text = "----------------------------------------------------------------------------------------------------------------------------------\n";
             receiptTxt.Text += "\nItem\t\tQTY\tPrice\n";
 
 
@@ -163,3 +166,4 @@ namespace OOPSummative2
         }
     }
 }
+ 
