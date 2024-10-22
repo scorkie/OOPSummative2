@@ -35,7 +35,7 @@ namespace OOPSummative2
             changeTxt.Text = "0.00";
             discTxt.Text = "0.00";
            
-            bill();
+            
         }
 
         private void UpdateSubtotal()
@@ -91,33 +91,46 @@ namespace OOPSummative2
 
         private void PrintBtn_Click(object sender, EventArgs e)
         {
-            bill(); 
+            
 
-            string filePath = @"C:\Users\ANYA\Documents\AFC RECEIPTS";
+            string directoryPath = @"C:\Users\ANYA\Documents\AFC RECEIPTS";
+            string fileName = $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.txt"; 
+            string filePath = Path.Combine(directoryPath, fileName);
 
+            
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            
             File.WriteAllText(filePath, receiptTxt.Text);
-            Console.WriteLine("Receipt saved to " + filePath);
+            MessageBox.Show("Transaction Done!");
+            //print receipt then go back to itemstab siguro?
+
         }
+
         public void bill(){
 
-            receiptTxt.Text = "Hello world"; 
-
-            receiptTxt.Text = "--------------------------------------------------------------------------------------------------------------------------------\n";
-            receiptTxt.Text = "\t\t\tAFC RESCUE TRADERS\n\t\tJefferson St., Samantha Homes\n\t\tMatina Pangi, Davao City\n\t\t\tAFC Rescue Traders@gmail.com\n0912-373-3353\n";
-            receiptTxt.Text = "----------------------------------------------------------------------------------------------------------------------------------\n";
-            receiptTxt.Text += "\nItem\t\tQTY\tPrice\n";
-
-
+            receiptTxt.Text += "\n-----------------------------------------------------------------------------\n";
+            receiptTxt.Text += "\n\t            AFC RESCUE TRADERS";
+            receiptTxt.Text += "\n\t         Jefferson St., Samantha Homes";
+            receiptTxt.Text += "\n\t            Matina Pangi, Davao City";
+            receiptTxt.Text += "\n\t        AFC Rescue Traders@gmail.com";
+            receiptTxt.Text += "\n\t                     0912-373-3353\n";
+            receiptTxt.Text += "\n-----------------------------------------------------------------------------\n";
+            receiptTxt.Text += "  Item \t\t\t\t\t\tQTY\t Price";
+            receiptTxt.Text += "\n----------------------------------------------------------------------------\n";
             foreach (RescueItem item in session.itemsToCheckout)
             {
-                receiptTxt.Text += item.itemName + "\t" + item.currentItemCount.ToString() + "\t" + item.itemPrice.ToString() + "\n";
-
+                receiptTxt.Text += "    " + item.itemName + "\t\t\t" + item.currentItemCount.ToString() + "\t " + item.itemPrice.ToString() + "\n";
             }
+            receiptTxt.Text += "\n======================================================\n";
             receiptTxt.Text += "\n";
             UpdateSubtotal();
-            receiptTxt.Text += "Subtotal\t\t\t\t₱" + subTxt.Text + "\n";
+            receiptTxt.Text += "\t   Subtotal\t\t\t\t₱" + subTxt.Text + "\n";
             decimal tax = Convert.ToDecimal(taxTxt.Text);
-            receiptTxt.Text += "Tax\t\t\t\t₱" + tax.ToString("N2") + "\n";
+            receiptTxt.Text += "\t   Tax\t\t\t\t\t₱" + tax.ToString("N2") + "\n";
             decimal discount = Convert.ToDecimal(discTxt.Text);
             if (discount > 0) { receiptTxt.Text += "Discount\t\t\t\t₱" + discount.ToString("N2") + "\n"; }
             receiptTxt.Text += "\n";
@@ -126,14 +139,22 @@ namespace OOPSummative2
             decimal total;
             if (discount > 0){total = taxedAmount * discount;}
             else { total = taxedAmount; }
-            receiptTxt.Text += "Total\t:\t\t\t₱" + total.ToString("N2") + "\n";
+            receiptTxt.Text += "\t   Total\t:\t\t\t₱" + total.ToString("N2") + "\n";
             decimal cash = Convert.ToDecimal(cashTxt.Text);
-            receiptTxt.Text += "Cash\t:\t\t\t₱" + cash.ToString("N2") + "\n";
+            receiptTxt.Text += "\t   Cash\t:\t\t\t\t₱" + cash.ToString("N2") + "\n";
             decimal change = cash - total;
-            receiptTxt.Text += "Change\t:\t\t\t₱" + change.ToString("N2") + "\n";
+            receiptTxt.Text += "\t   Change\t:\t\t\t₱" + change.ToString("N2") + "\n";
             receiptTxt.Text += "\n";
+            receiptTxt.Text += "\n======================================================\n";
+            receiptTxt.Text += $"\t       Date : {DateTime.Now:dd-MM-yyyy}  Time : {DateTime.Now:HH:mm:ss}";
+            receiptTxt.Text += "\n======================================================\n";
+            receiptTxt.Text += "\t          Thank you for your patronage!";
+            receiptTxt.Text += "\n======================================================\n";
+            receiptTxt.Text += "\t\t     Sofware by OOPWorld\n\t\tContact: oopworld@gmail.com";
 
-        }  
+
+
+        }
         private void receiptTxt_TextChanged(object sender, EventArgs e)
         {
 
@@ -162,7 +183,8 @@ namespace OOPSummative2
 
             decimal change = cash - total;
             changeTxt.Text = change.ToString("N2");
-           
+            bill();
+
         }
     }
 }

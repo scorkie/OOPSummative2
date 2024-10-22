@@ -292,6 +292,7 @@
             // 
             // receiptTxt
             // 
+            this.receiptTxt.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.receiptTxt.Location = new System.Drawing.Point(18, 19);
             this.receiptTxt.Name = "receiptTxt";
             this.receiptTxt.Size = new System.Drawing.Size(395, 666);
