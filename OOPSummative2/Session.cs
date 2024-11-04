@@ -12,8 +12,17 @@ namespace OOPSummative2
     {
         public SqlConnection connection;
         public List<RescueItem> itemsToCheckout = new List<RescueItem>();
+        private string dataSource;
+        private string initialCatalog;
 
         public Session(string dataSource, string initialCatalog)
+        {
+            this.dataSource = dataSource;
+            this.initialCatalog = initialCatalog;
+            makeConnection();
+        }
+
+        private void makeConnection()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder()
             {
@@ -26,7 +35,7 @@ namespace OOPSummative2
             try
             {
                 connection.Open();
-            } 
+            }
             catch (SqlException ex)
             {
                 if (ex.Number == -1 || ex.Number == 2 || ex.Number == 53)
@@ -37,6 +46,13 @@ namespace OOPSummative2
 
                 Environment.Exit(-1);
             }
+        }
+
+        public void resetSession()
+        {
+            itemsToCheckout.Clear();
+            connection.Close();
+            makeConnection();
         }
 
         public void AddItem(RescueItem item)

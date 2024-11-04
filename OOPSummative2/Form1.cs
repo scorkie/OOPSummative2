@@ -10,8 +10,8 @@ namespace OOPSummative2
         public Form1()
         {
             InitializeComponent();
-            //connection = new Session("MSI\\SQLEXPRESS", "RescueDB");
-            connection = new Session("DESKTOP-3CSMR83", "RescueDB");
+            connection = new Session("MSI\\SQLEXPRESS", "RescueDB");
+            //connection = new Session("DESKTOP-3CSMR83", "RescueDB");
             // Load firstaid as default
             loadform(new itemsTab(connection, RescueItemType.FIRSTAID));
         }

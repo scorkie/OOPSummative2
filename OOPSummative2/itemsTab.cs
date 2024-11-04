@@ -22,7 +22,6 @@ namespace OOPSummative2
             this.session = session;
             this.tabItemsType = type;
             refreshItems();
-            
         }
 
         private void refreshItems()

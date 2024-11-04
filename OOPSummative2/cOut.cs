@@ -2,9 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Security.Policy;
-using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms;     
 
 namespace OOPSummative2
 {
@@ -75,12 +73,19 @@ namespace OOPSummative2
 
         private void clrBtn_Click(object sender, EventArgs e)
         {
+            reset();
+        }
+
+        private void reset()
+        { 
             taxTxt.Text = "0.00";
             cashTxt.Text = "0.00";
             totalTxt.Text = "0.00";
             discTxt.Text = "0.00";  
             changeTxt.Text = "0.00";
-            
+            receiptTxt.Text = "";
+            session.resetSession();
+            refreshDataGrid();
         }
 
 
@@ -93,7 +98,7 @@ namespace OOPSummative2
         {
             
 
-            string directoryPath = @"C:\Users\ANYA\Documents\AFC RECEIPTS";
+            string directoryPath = @"C:\Users\Keian\Documents\AFC RECEIPTS";
             string fileName = $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.txt"; 
             string filePath = Path.Combine(directoryPath, fileName);
 
@@ -107,6 +112,8 @@ namespace OOPSummative2
             File.WriteAllText(filePath, receiptTxt.Text);
             MessageBox.Show("Transaction Done!");
             //print receipt then go back to itemstab siguro?
+            reset();
+            Refresh();
 
         }
 
@@ -166,11 +173,13 @@ namespace OOPSummative2
             decimal subtotal = session.itemsToCheckout.Sum(item => item.itemPrice * item.currentItemCount);
             decimal taxed = subtotal + tax;
             decimal total;
+            decimal semitotal;
             decimal discount = Convert.ToDecimal(discTxt.Text);
 
             if (discount > 0)
             {
-                total = taxed * discount;
+                semitotal = taxed * discount;
+                total = taxed -semitotal;
             }
             else
             {
@@ -181,9 +190,15 @@ namespace OOPSummative2
 
             totalTxt.Text = "₱" + total.ToString("N2");
 
-            decimal change = cash - total;
-            changeTxt.Text = change.ToString("N2");
-            bill();
+            if (cash > 0)
+            {
+                decimal change = cash - total;
+                changeTxt.Text = change.ToString("N2");
+                bill();
+            }
+
+            
+            
 
         }
     }
